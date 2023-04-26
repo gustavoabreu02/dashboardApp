@@ -54,22 +54,12 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3004/vendas",
+      "http://localhost:3001/vendas",
       requestOptions
     );
     const response = await fetchAPI.json();
-    console.log(response);
-    const result = response.reduce((resultSoma, vendas) => {
-      const venda = parseFloat(vendas.VENDA.replace(",", "."));
-      return venda + resultSoma;
-    }, 0);
-    setVendas(
-      new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      }).format(result.toFixed(2))
-    );
-    result.toFixed(1);
+    console.log(response[0]);
+    setVendas(response[0]);
   };
 
   const getVendasRCA = async () => {
@@ -81,7 +71,7 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3004/vendas/rca",
+      "http://localhost:3001/vendas/rca",
       requestOptions
     );
     const response = await fetchAPI.json();
@@ -105,7 +95,7 @@ function Dashboard() {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Pedidos realizados</p>
-                      <CardTitle tag="p">1422</CardTitle>
+                      <CardTitle tag="p">{vendas.Total_Venda_VFA}</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -131,7 +121,12 @@ function Dashboard() {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Vendas</p>
-                      <CardTitle tag="p">{vendas}</CardTitle>
+                      <CardTitle tag="p">
+                        {new Intl.NumberFormat("pt-BR", {
+                          style: "currency",
+                          currency: "BRL",
+                        }).format(Number(vendas.Total_Venda_Valor).toFixed(2))}
+                      </CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -157,7 +152,7 @@ function Dashboard() {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Itens</p>
-                      <CardTitle tag="p">12614</CardTitle>
+                      <CardTitle tag="p">{vendas.Total_Venda}</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -182,8 +177,8 @@ function Dashboard() {
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Toneladas</p>
-                      <CardTitle tag="p">29.88</CardTitle>
+                      <p className="card-category">Caixas</p>
+                      <CardTitle tag="p">{vendas.Total_Caixa}</CardTitle>
                       <p />
                     </div>
                   </Col>
