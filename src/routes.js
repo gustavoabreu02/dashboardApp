@@ -37,49 +37,49 @@ var routes = [
     name: "DASHBOARD",
     icon: "nc-icon nc-bank",
     component: Dashboard,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
-    path: "/icons",
+    path: "/rotinas",
     name: "ROTINAS DE TRABALHO",
     icon: "nc-icon nc-diamond",
     component: RotinasTrabalho,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
-    path: "/maps",
+    path: "/gestao",
     name: "GESTÃO DE KPIs",
     icon: "nc-icon nc-pin-3",
     component: GestaoKPIs,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
-    path: "/notifications",
+    path: "/analise",
     name: "ANÁLISE DE VENDAS",
     icon: "nc-icon nc-bell-55",
     component: AnaliseVendas,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
-    path: "/user-page",
+    path: "/processos",
     name: "PROCESSOS GERENCIAIS",
     icon: "nc-icon nc-single-02",
     component: ProcessosGeren,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/tables",
     name: "Table List",
     icon: "nc-icon nc-tile-56",
     component: Icons,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
-    path: "/typography",
+    path: "/planejamento",
     name: "PLANEJAMENTO",
     icon: "nc-icon nc-caps-small",
     component: Planejamento,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     pro: true,
@@ -87,7 +87,7 @@ var routes = [
     name: "SAIR",
     icon: "nc-icon nc-button-power",
     component: UpgradeToPro,
-    layout: ""
-  }
+    layout: "",
+  },
 ];
 export default routes;

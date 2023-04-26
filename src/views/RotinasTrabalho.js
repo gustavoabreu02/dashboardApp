@@ -21,6 +21,7 @@ import React from "react";
 // reactstrap components
 import { Card, CardHeader, CardBody, CardTitle, Row, Col } from "reactstrap";
 import RotinasSemanal from "./RotinasSemanal";
+import { Link } from "react-router-dom";
 
 function RotinasTrabalho() {
   return (
@@ -73,11 +74,13 @@ function RotinasTrabalho() {
                         <p>CAMPANHA PEPSICO</p>
                         <em>\ea5a</em>
                       </li>
+                      <Link to="/admin/rotinas/campanhas">
                       <li>
                         <i className="nc-icon nc-trophy" />
                         <p>CAMPANHAS</p>
                         <em>\ea5d</em>
                       </li>
+                      </Link>
                       <a href="https://pepsicorace.com.br/login.php"
                       target="_blank"
                       rel="noreferrer" >

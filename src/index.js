@@ -28,6 +28,7 @@ import "assets/css/login.css";
 
 import AdminLayout from "layouts/Admin.js";
 import Login from "views/Login";
+import Campanhas from "components/Telas/Campanhas";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -35,6 +36,7 @@ root.render(
   <BrowserRouter>
     <Switch>
       <Route path="/login" component={Login} />
+      <Route path="/admin/rotinas/campanhas" component={Campanhas} />
       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
       <Redirect to="/admin/dashboard" />
     </Switch>
