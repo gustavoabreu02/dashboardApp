@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // react plugin used to create charts
 import { Line, Pie } from "react-chartjs-2";
 // reactstrap components
@@ -27,7 +27,7 @@ import {
   CardFooter,
   CardTitle,
   Row,
-  Col,  
+  Col,
 } from "reactstrap";
 // core components
 import {
@@ -37,10 +37,15 @@ import {
 } from "variables/charts.js";
 
 function Dashboard() {
-
   const [vendas, setVendas] = useState(0);
+  const [vendasRCA, setVendasRCA] = useState([]);
 
-  const vendasSup = async () => {
+  useEffect(() => {
+    getVendasRCA();
+    getVendasSup();
+  }, []);
+
+  const getVendasSup = async () => {
     const sup = JSON.parse(localStorage.getItem("sup"));
     console.log(sup);
     const requestOptions = {
@@ -49,21 +54,41 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3002/vendas",
+      "http://localhost:3004/vendas",
       requestOptions
     );
     const response = await fetchAPI.json();
     console.log(response);
     const result = response.reduce((resultSoma, vendas) => {
-        const venda = parseFloat(vendas.VENDA.replace(",", "."));
-        return venda + resultSoma
-      }, 0)
-    setVendas(new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(result.toFixed(2)))
-    result.toFixed(1)
+      const venda = parseFloat(vendas.VENDA.replace(",", "."));
+      return venda + resultSoma;
+    }, 0);
+    setVendas(
+      new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }).format(result.toFixed(2))
+    );
+    result.toFixed(1);
   };
 
-  vendasSup();
-  console.log(1);
+  const getVendasRCA = async () => {
+    const sup = JSON.parse(localStorage.getItem("sup"));
+    console.log(sup);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
+    };
+    const fetchAPI = await fetch(
+      "http://localhost:3004/vendas/rca",
+      requestOptions
+    );
+    const response = await fetchAPI.json();
+    console.log(response);
+    setVendasRCA(response);
+  };
+
   return (
     <>
       <div className="content">
@@ -246,6 +271,65 @@ function Dashboard() {
                 <hr />
                 <div className="card-stats">
                   <i className="fa fa-check" /> Data information certified
+                </div>
+              </CardFooter>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col md="12">
+            <Card>
+              <CardHeader>
+                <CardTitle tag="h5">Users Behavior</CardTitle>
+                <p className="card-category">24 Hours performance</p>
+              </CardHeader>
+              <CardBody>
+                <div className="card mb-4">
+                  <div className="card-header">
+                    <i className="fas fa-table me-1"></i>
+                    DataTable Example
+                  </div>
+                  <div className="card-body">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Position</th>
+                          <th scope="col">Código</th>
+                          <th scope="col">Representante</th>
+                          <th scope="col">Venda</th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <th scope="col">Position</th>
+                          <th scope="col">Código</th>
+                          <th scope="col">Representante</th>
+                          <th scope="col">Venda</th>
+                        </tr>
+                      </tfoot>
+                      <tbody>
+                        {vendasRCA.map((rca, i) => (
+                          <tr className="table-success" key={i}>
+                            <td>{i + 1}</td>
+                            <td>{rca.CODUSUR}</td>
+                            <td>{rca.REPRESENTANTE}</td>
+                            <td>
+                              {new Intl.NumberFormat("pt-BR", {
+                                style: "currency",
+                                currency: "BRL",
+                              }).format(rca.TOTAL_VENDAS.toFixed(2))}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </CardBody>
+              <CardFooter>
+                <hr />
+                <div className="stats">
+                  <i className="fa fa-history" /> Updated 3 minutes ago
                 </div>
               </CardFooter>
             </Card>
