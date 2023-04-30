@@ -131,14 +131,14 @@ function Campanhas(props) {
     setRca(updatedRca);
   };
 
-  const handleChange = ({target}) => {
+  const handleChange = ({ target }) => {
     const { name, value } = target;
-    setCampanha({...campanha, [name]: value})
-  }
+    setCampanha({ ...campanha, [name]: value });
+  };
 
   const cadastrarCampanha = () => {
-    const updatedCampanha = {...campanha, produtos: product, rcas: rca }
-    setCampanha(updatedCampanha)
+    const updatedCampanha = { ...campanha, produtos: product, rcas: rca };
+    setCampanha(updatedCampanha);
     console.log(campanha);
   };
   console.log(campanha);
@@ -160,109 +160,16 @@ function Campanhas(props) {
                   <p className="card-category">24 Hours performance</p>
                 </CardHeader>
                 <CardBody>
-                  <form>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputAddress">Título da campanha</label>
-                        <input
-                          onChange={handleChange}
-                          value={campanha.titulo}
-                          name="titulo"
-                          type="text"
-                          class="form-control"
-                          id="inputAddress"
-                          placeholder="Digite o título da campanha"
-                        />
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="inputState">Supervisor</label>
-                        <select name="sup" id="inputState" class="form-control" onChange={handleChange}>
-                          <option selected>Paulinho</option>
-                          <option>Jhosy</option>
-                          <option>Silva</option>
-                          <option>Esly</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="inputPassword4">Código do produto</label>
-                        <input
-                          name="codProduct"
-                          value={codProduct}
-                          type="text"
-                          class="form-control"
-                          id="inputPassword4"
-                          placeholder="Digite o código do produto"
-                          onChange={handleChangeProduct}
-                          onKeyDown={getProdut}
-                        />
-                      </div>
-                    </div>
-                    {product.map((prod, i) => (
-                      <div>
-                        <div class="form-group">
-                          <label for="inputAddress">Produto</label>
-                          <input
-                            autocomplete="off"
-                            id={i}
-                            onDoubleClick={removeProduct}
-                            value={prod}
-                            type="text"
-                            class="form-control"
-                            placeholder="Produto"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                    <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="inputState">Clientes positivados</label>
-                        <input
-                          onClick={handleClick}
-                          id="inputState"
-                          class="form-control"
-                          type="number"
-                        />
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="inputCity">Representante</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="inputCity"
-                          placeholder="Digite o código do RCA"
-                          onChange={handleChangeRca}
-                          onKeyDown={getRca}
-                        />
-                      </div>
-                    </div>
-                    {rca.map((rca, i) => (
-                      <div class="form-group">
-                        <label for="inputAddress">RCA</label>
-                        <input
-                          id={i}
-                          value={rca}
-                          type="text"
-                          class="form-control"
-                          placeholder="RCA"
-                          onDoubleClick={removeRca}
-                        />
-                      </div>
-                    ))}
-                    <div class="form-floating">
-                    <label for="floatingTextarea">Descrição</label>
-                      <textarea
-                        name="descrição"
-                        value={campanha.descrição}
-                        onChange={handleChange}
-                        class="form-control"
-                        placeholder="Escreva a descrição da campanha"
-                        id="floatingTextarea"
-                      ></textarea>
-                    </div>
-                    <button type="button" class="btn btn-primary" onClick={cadastrarCampanha}>
-                      CADASTRAR
-                    </button>
-                  </form>
+                  <div class="mb-3">
+                    <label for="formFileDisabled" class="form-label">
+                      Disabled file input example
+                    </label>
+                    <input
+                      class="form-control"
+                      type="file"
+                      id="formFileDisabled"
+                    />
+                  </div>
                 </CardBody>
                 <CardFooter>
                   <hr />

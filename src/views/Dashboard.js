@@ -54,7 +54,7 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3004/vendas",
+      "http://localhost:3003/vendas",
       requestOptions
     );
     const response = await fetchAPI.json();
@@ -71,7 +71,7 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3004/vendas/rca",
+      "http://localhost:3003/vendas/rca",
       requestOptions
     );
     const response = await fetchAPI.json();
