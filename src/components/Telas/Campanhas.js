@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 import { useLocation } from "react-router-dom";
 
+
 import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
@@ -67,7 +68,7 @@ function Campanhas(props) {
         body: JSON.stringify({ codigo: codProduct }),
       };
       const fetchAPI = await fetch(
-        "http://localhost:3003/products/codigo",
+        "http://localhost:3001/products/codigo",
         requestOptions
       );
       const response = await fetchAPI.json();
@@ -90,7 +91,7 @@ function Campanhas(props) {
         body: JSON.stringify({ codigo: codRca }),
       };
       const fetchAPI = await fetch(
-        "http://localhost:3003/rcas/codigo",
+        "http://localhost:3001/rcas/codigo",
         requestOptions
       );
       const response = await fetchAPI.json();
@@ -141,7 +142,23 @@ function Campanhas(props) {
     setCampanha(updatedCampanha);
     console.log(campanha);
   };
-  console.log(campanha);
+
+  const handleFiles = async ({target}) => {
+    const formData = new FormData();
+    formData.append('file', target.files[0]);
+    console.log(formData);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      file: formData,
+    };
+    const fetchAPI = await fetch(
+      "http://localhost:3001/campanhas/upload",
+      requestOptions
+    );
+    const response = await fetchAPI.json();
+    console.log(response);
+  }
   return (
     <div className="wrapper">
       <Sidebar
@@ -162,9 +179,10 @@ function Campanhas(props) {
                 <CardBody>
                   <div class="mb-3">
                     <label for="formFileDisabled" class="form-label">
-                      Disabled file input example
+                      Faça upload de sua campanha
                     </label>
                     <input
+                    onChange={handleFiles}
                       class="form-control"
                       type="file"
                       id="formFileDisabled"
