@@ -144,20 +144,20 @@ function Campanhas(props) {
   };
 
   const handleFiles = async ({target}) => {
+    const file = target.files[0];
     const formData = new FormData();
-    formData.append('file', target.files[0]);
-    console.log(formData);
+    formData.append('file', file);
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      file: formData,
+      headers: { "name": "campanha", "sup": "jhosy" },
+      body: formData,
     };
     const fetchAPI = await fetch(
-      "http://localhost:3001/campanhas/upload",
+      "http://localhost:3003/campanhas/upload",
       requestOptions
     );
     const response = await fetchAPI.json();
-    console.log(response);
+    /* console.log(response); */
   }
   return (
     <div className="wrapper">
