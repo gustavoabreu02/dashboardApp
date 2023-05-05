@@ -41,8 +41,14 @@ function Dashboard() {
   const [vendasRCA, setVendasRCA] = useState([]);
 
   useEffect(() => {
-    getVendasRCA();
-    getVendasSup();
+    const sup = JSON.parse(localStorage.getItem("sup"));
+    if (sup.level === "AUX") {
+      getAllVendas();
+      getAllVendasRCA();
+    } else {
+      getVendasSup();
+      getVendasRCA();
+    }
   }, []);
 
   const getVendasSup = async () => {
@@ -54,7 +60,22 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3001/vendas",
+      "http://localhost:3003/vendas/sup",
+      requestOptions
+    );
+    const response = await fetchAPI.json();
+    console.log(response[0]);
+    setVendas(response[0]);
+  };
+
+  const getAllVendas = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mes: "FEV.23" }),
+    };
+    const fetchAPI = await fetch(
+      "http://localhost:3003/vendas",
       requestOptions
     );
     const response = await fetchAPI.json();
@@ -71,13 +92,27 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3001/vendas/rca",
+      "http://localhost:3003/vendas/rca",
       requestOptions
     );
     const response = await fetchAPI.json();
-    console.log(response);
     setVendasRCA(response);
   };
+
+  const getAllVendasRCA = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mes: "FEV.23" }),
+    };
+    const fetchAPI = await fetch(
+      "http://localhost:3003/vendas/allrca",
+      requestOptions
+    );
+    const response = await fetchAPI.json();
+    setVendasRCA(response);
+  };
+  
 
   return (
     <>

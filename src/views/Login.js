@@ -35,7 +35,7 @@ function Login(props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(sup),
     };
-    const fetchAPI = await fetch("http://localhost:3001/login", requestOptions);
+    const fetchAPI = await fetch("http://localhost:3003/login", requestOptions);
     const response = await fetchAPI.json();
     console.log(response);
     if (response.message) {
