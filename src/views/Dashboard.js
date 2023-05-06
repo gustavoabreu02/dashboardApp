@@ -112,7 +112,6 @@ function Dashboard() {
     const response = await fetchAPI.json();
     setVendasRCA(response);
   };
-  
 
   return (
     <>
@@ -232,8 +231,8 @@ function Dashboard() {
           <Col md="12">
             <Card>
               <CardHeader>
-                <CardTitle tag="h5">Users Behavior</CardTitle>
-                <p className="card-category">24 Hours performance</p>
+                <CardTitle tag="h5">Vendas Gerais</CardTitle>
+                <p className="card-category">Gráfico de vendas geral</p>
               </CardHeader>
               <CardBody>
                 <Line
@@ -256,8 +255,8 @@ function Dashboard() {
           <Col md="4">
             <Card>
               <CardHeader>
-                <CardTitle tag="h5">Email Statistics</CardTitle>
-                <p className="card-category">Last Campaign Performance</p>
+                <CardTitle tag="h5">Top Fornecedores</CardTitle>
+                <p className="card-category">Top 4</p>
               </CardHeader>
               <CardBody style={{ height: "266px" }}>
                 <Pie
@@ -267,14 +266,14 @@ function Dashboard() {
               </CardBody>
               <CardFooter>
                 <div className="legend">
-                  <i className="fa fa-circle text-primary" /> Opened{" "}
-                  <i className="fa fa-circle text-warning" /> Read{" "}
-                  <i className="fa fa-circle text-danger" /> Deleted{" "}
-                  <i className="fa fa-circle text-gray" /> Unopened
+                  <i className="fa fa-circle text-primary" /> Nissin{" "}
+                  <i className="fa fa-circle text-warning" /> Bimbo{" "}
+                  <i className="fa fa-circle text-danger" /> Pepsico{" "}
+                  <i className="fa fa-circle text-gray" /> Minuano
                 </div>
                 <hr />
                 <div className="stats">
-                  <i className="fa fa-calendar" /> Number of emails sent
+                  <i className="fa fa-calendar" /> Fevereiro
                 </div>
               </CardFooter>
             </Card>
@@ -282,8 +281,8 @@ function Dashboard() {
           <Col md="8">
             <Card className="card-chart">
               <CardHeader>
-                <CardTitle tag="h5">NASDAQ: AAPL</CardTitle>
-                <p className="card-category">Line Chart with Points</p>
+                <CardTitle tag="h5">Vendas Supervisores</CardTitle>
+                <p className="card-category">Gráfico de vendas por supervisor</p>
               </CardHeader>
               <CardBody>
                 <Line
@@ -295,12 +294,12 @@ function Dashboard() {
               </CardBody>
               <CardFooter>
                 <div className="chart-legend">
-                  <i className="fa fa-circle text-info" /> Tesla Model S{" "}
-                  <i className="fa fa-circle text-warning" /> BMW 5 Series
+                  <i className="fa fa-circle text-info" /> Jhosy{" "}
+                  <i className="fa fa-circle text-warning" /> Silva
                 </div>
                 <hr />
                 <div className="card-stats">
-                  <i className="fa fa-check" /> Data information certified
+                  <i className="fa fa-check" /> Fevereiro
                 </div>
               </CardFooter>
             </Card>
@@ -310,14 +309,14 @@ function Dashboard() {
           <Col md="12">
             <Card>
               <CardHeader>
-                <CardTitle tag="h5">Users Behavior</CardTitle>
-                <p className="card-category">24 Hours performance</p>
+                <CardTitle tag="h5">Top Vendedores</CardTitle>
+                <p className="card-category">Atualização em 3 minutos</p>
               </CardHeader>
               <CardBody>
                 <div className="card mb-4">
                   <div className="card-header">
                     <i className="fas fa-table me-1"></i>
-                    DataTable Example
+                    Ranking
                   </div>
                   <div className="card-body">
                     <table className="table">
