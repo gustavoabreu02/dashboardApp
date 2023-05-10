@@ -28,11 +28,8 @@ Para executar este projeto em sua máquina, siga os passos abaixo:
 
 2. Instale as dependências do projeto utilizando o comando `npm install`.
 
-3. Configure o banco de dados em `backend/src/config/database.ts`.
+3. Execute o comando `npm start` para iniciar o frontend.
 
-4. Execute o comando `npm run dev` para iniciar o servidor e o frontend.
-
-5. Abra o Dashboard em seu navegador através do endereço `http://localhost:3000`.
 
 ## Dependências
 
