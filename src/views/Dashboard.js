@@ -1,25 +1,5 @@
-/*!
-
-=========================================================
-* Paper Dashboard React - v1.3.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/main/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, { useEffect, useState } from "react";
-// react plugin used to create charts
 import { Line, Pie } from "react-chartjs-2";
-// reactstrap components
 import {
   Card,
   CardHeader,
@@ -29,7 +9,6 @@ import {
   Row,
   Col,
 } from "reactstrap";
-// core components
 import {
   dashboard24HoursPerformanceChart,
   dashboardEmailStatisticsChart,
@@ -60,7 +39,7 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3003/vendas/sup",
+      "http://localhost:3004/vendas/sup",
       requestOptions
     );
     const response = await fetchAPI.json();
@@ -75,7 +54,7 @@ function Dashboard() {
       body: JSON.stringify({ mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3003/vendas",
+      "http://localhost:3004/vendas",
       requestOptions
     );
     const response = await fetchAPI.json();
@@ -92,7 +71,7 @@ function Dashboard() {
       body: JSON.stringify({ codSup: sup.CODSUPERV, mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3003/vendas/rca",
+      "http://localhost:3004/vendas/rca",
       requestOptions
     );
     const response = await fetchAPI.json();
@@ -106,7 +85,7 @@ function Dashboard() {
       body: JSON.stringify({ mes: "FEV.23" }),
     };
     const fetchAPI = await fetch(
-      "http://localhost:3003/vendas/allrca",
+      "http://localhost:3004/vendas/allrca",
       requestOptions
     );
     const response = await fetchAPI.json();
@@ -282,7 +261,9 @@ function Dashboard() {
             <Card className="card-chart">
               <CardHeader>
                 <CardTitle tag="h5">Vendas Supervisores</CardTitle>
-                <p className="card-category">Gráfico de vendas por supervisor</p>
+                <p className="card-category">
+                  Gráfico de vendas por supervisor
+                </p>
               </CardHeader>
               <CardBody>
                 <Line

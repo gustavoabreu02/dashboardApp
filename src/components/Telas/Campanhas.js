@@ -21,11 +21,11 @@ var ps;
 function Campanhas(props) {
   const [backgroundColor, setBackgroundColor] = React.useState("black");
   const [activeColor, setActiveColor] = React.useState("info");
-  const [codProduct, setCodProduct] = useState("");
+/*   const [codProduct, setCodProduct] = useState("");
   const [codRca, setCodRca] = useState("");
   const [product, setProduct] = useState([]);
   const [rca, setRca] = useState([]);
-  const [clientesPo, setClientesPo] = useState(0);
+  const [clientesPo, setClientesPo] = useState(0); */
   const [data, setData] = useState({});
   const [campanha, setCampanha] = useState({
     name: "",
@@ -68,7 +68,7 @@ function Campanhas(props) {
     setBackgroundColor(color);
   };
 
-  const getProdut = async (e) => {
+/*   const getProdut = async (e) => {
     if (e.key === "Enter") {
       console.log(1);
       const requestOptions = {
@@ -89,9 +89,9 @@ function Campanhas(props) {
       }
       setProduct([...product]);
     }
-  };
+  }; */
 
-  const getRca = async (e) => {
+/*   const getRca = async (e) => {
     if (e.key === "Enter") {
       console.log(1);
       const requestOptions = {
@@ -113,9 +113,9 @@ function Campanhas(props) {
       }
       setRca([...rca]);
     }
-  };
+  }; */
 
-  const handleChangeProduct = ({ target }) => {
+/*   const handleChangeProduct = ({ target }) => {
     setCodProduct(target.value);
     console.log(codProduct);
   };
@@ -134,12 +134,12 @@ function Campanhas(props) {
       (item, index) => index !== Number(target.id)
     );
     setProduct(updatedProduct);
-  };
+  }; */
 
-  const removeRca = ({ target }) => {
+/*   const removeRca = ({ target }) => {
     const updatedRca = rca.filter((item, index) => index !== Number(target.id));
     setRca(updatedRca);
-  };
+  }; */
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -153,11 +153,10 @@ function Campanhas(props) {
       headers: campanha,
       body: data,
     };
-    const fetchAPI = await fetch(
-      "http://localhost:3003/campanhas/upload",
+    await fetch(
+      "http://localhost:3004/campanhas/upload",
       requestOptions
     );
-    const response = await fetchAPI.json();
     getCampanhasAtivas();
   };
 
@@ -178,7 +177,7 @@ function Campanhas(props) {
         body: JSON.stringify({ sup: sup.username }),
       };
       const fetchAPI = await fetch(
-        "http://localhost:3003/campanhas/sup",
+        "http://localhost:3004/campanhas/sup",
         requestOptions
       );
       const response = await fetchAPI.json();
@@ -189,7 +188,7 @@ function Campanhas(props) {
         method: "GET",
       };
       const fetchAPI = await fetch(
-        "http://localhost:3003/campanhas/",
+        "http://localhost:3004/campanhas/",
         requestOptions
       );
       const response = await fetchAPI.json();
@@ -204,11 +203,10 @@ function Campanhas(props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: id, file: name }),
     };
-    const fetchAPI = await fetch(
-      "http://localhost:3003/campanhas/delete",
+    await fetch(
+      "http://localhost:3004/campanhas/delete",
       requestOptions
     );
-    const response = await fetchAPI.json();
     getCampanhasAtivas();
   };
 
@@ -307,7 +305,7 @@ function Campanhas(props) {
                           Aperte no botão abaixo para baixar a campanha!
                         </p>
                         <a
-                          href={`http://localhost:3003/campanhas/download/${camp.file.replace(
+                          href={`http://localhost:3004/campanhas/download/${camp.file.replace(
                             "uploads/",
                             ""
                           )}`}

@@ -1,21 +1,3 @@
-/*!
-
-=========================================================
-* Paper Dashboard React - v1.3.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/main/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -69,7 +51,7 @@ function Header(props) {
     document.documentElement.classList.toggle("nav-open");
     sidebarToggle.current.classList.toggle("toggled");
   };
-  // function that adds color dark/transparent to the navbar on resize (this is for the collapse)
+  
   const updateColor = () => {
     if (window.innerWidth < 993 && isOpen) {
       setColor("dark");
@@ -90,7 +72,7 @@ function Header(props) {
     }
   }, [location]);
   return (
-    // add or remove classes depending if we are on full-screen-maps page or not
+
     <Navbar
       color={
         props.location.pathname.indexOf("full-screen-maps") !== -1
