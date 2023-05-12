@@ -24,7 +24,7 @@ As principais tecnologias utilizadas neste projeto foram:
 
 Para executar este projeto em sua máquina, siga os passos abaixo:
 
-1. Clone este repositório em sua máquina utilizando o comando `git clone https://github.com/seu-usuario/dashboard-gd7.git`.
+1. Clone este repositório em sua máquina utilizando o comando `git clone https://github.com/gustavoabreu02/dashboardApp.git`.
 
 2. Instale as dependências do projeto utilizando o comando `npm install`.
 
