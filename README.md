@@ -55,3 +55,7 @@ As principais dependências utilizadas neste projeto foram:
 ## Contribuição
 
 Este projeto foi desenvolvido como uma solução para a empresa GD7, mas sugestões e melhorias são sempre bem-vindas. Se você tiver alguma ideia, fique à vontade para abrir uma issue ou um pull request.
+
+## Autores
+
+- [@gustavoabreu02](https://www.github.com/gustavoabreu02)
