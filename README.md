@@ -1,4 +1,4 @@
-# Dashboard
+# Dashboard 
 
 Este é um Dashboard desenvolvido para a empresa GD7 com o objetivo de fornecer aos supervisores acesso fácil às informações de campanhas e vendas mensais. Ele foi desenvolvido utilizando React para o frontend e Node.js com TypeScript para o backend. A API criada permite a conexão do Dashboard com o banco de dados e recuperar informações relevantes para exibir no frontend. 
 
